@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: demo-service-mesh
+  name: 'service-a'
+  annotations: {}
+  labels:
+    app: service-a
+
+    app.kubernetes.io/component: service-a
+    app.kubernetes.io/instance: service-a
+    app.kubernetes.io/name: service-a
+    app.kubernetes.io/part-of: service-a
+    app.openshift.io/runtime-namespace: demo-service-mesh
+
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8080"
+    prometheus.io/scheme: "http"
+spec:
+  selector:
+    matchLabels:
+      app: service-a
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service-a
+        app.kubernetes.io/component: service-a
+        app.kubernetes.io/name: service-a
+        deployment: service-a
+    spec:
+      containers:
+        - name: container
+          image: >-
+            <DOCKER_IMAGE>
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      imagePullSecrets: []
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  paused: false

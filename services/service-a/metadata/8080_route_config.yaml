@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: route-service-a
+  namespace: demo-service-mesh
+  labels:
+    app: service-a
+    app.kubernetes.io/component: service-a
+    app.kubernetes.io/instance: service-a
+    app.kubernetes.io/name: service-a
+    app.kubernetes.io/part-of: service-a
+spec:
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: service-a
