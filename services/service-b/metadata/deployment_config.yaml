@@ -2,15 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: demo-service-mesh
-  name: 'service-a-v1'
+  name: 'service-b'
   annotations: {}
   labels:
-    app: service-a
+    app: service-b
 
-    app.kubernetes.io/component: service-a
-    app.kubernetes.io/instance: service-a
-    app.kubernetes.io/name: service-a
-    app.kubernetes.io/part-of: service-a
+    app.kubernetes.io/component: service-b
+    app.kubernetes.io/instance: service-b
+    app.kubernetes.io/name: service-b
+    app.kubernetes.io/part-of: service-b
     app.openshift.io/runtime-namespace: demo-service-mesh
 
     prometheus.io/scrape: "true"
@@ -19,23 +19,23 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: service-a
+      app: service-b
   replicas: 2
   template:
     metadata:
       labels:
-        app: service-a
+        app: service-b
         version: v1
-        app.kubernetes.io/component: service-a
-        app.kubernetes.io/name: service-a
-        deployment: service-a
+        app.kubernetes.io/component: service-b
+        app.kubernetes.io/name: service-b
+        deployment: service-b
       annotations:
         sidecar.istio.io/inject: "true"
     spec:
       containers:
         - name: container
           image: >-
-            quay.io/appdev_playground/service-mesh-basic-example:service-a-0.0.13
+            quay.io/appdev_playground/service-mesh-basic-example:service-b-0.0.13
           ports:
             - containerPort: 8080
               protocol: TCP

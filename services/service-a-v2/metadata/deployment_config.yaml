@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: demo-service-mesh
-  name: 'service-a-v1'
+  name: 'service-a-v2'
   annotations: {}
   labels:
     app: service-a
@@ -25,7 +25,7 @@ spec:
     metadata:
       labels:
         app: service-a
-        version: v1
+        version: v2
         app.kubernetes.io/component: service-a
         app.kubernetes.io/name: service-a
         deployment: service-a
@@ -35,7 +35,7 @@ spec:
       containers:
         - name: container
           image: >-
-            quay.io/appdev_playground/service-mesh-basic-example:service-a-0.0.13
+            quay.io/appdev_playground/service-mesh-basic-example:service-a-v2-0.0.13
           ports:
             - containerPort: 8080
               protocol: TCP

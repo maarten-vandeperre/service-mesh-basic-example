@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/part-of: service-a
 spec:
   ports:
-    - name: 8080-tcp
+    - name: http-8080
       port: 8080
       protocol: TCP
       targetPort: 8080

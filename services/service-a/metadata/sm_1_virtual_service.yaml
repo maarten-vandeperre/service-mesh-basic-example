@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: demo-services-vs
+spec:
+  hosts:
+#    - service-a #List of destinations to which these routing rules apply.
+    - "*"
+  gateways:
+    - demo-services-gateway
+#  http:
+#    - route:
+#        - destination:
+#            host: service-a
+#            port:
+#              name: http-8080
+#              number: 8080
+  http:
+    - match:
+        - uri:
+            prefix: /service-a
+      rewrite:
+        uri: /
+        uriRegexRewrite:
+          match: ^/service-a/(/.*)$
+          rewrite: /\1
+      route:
+        - destination:
+            host: service-a.demo-service-mesh.svc.cluster.local
+            port:
+              number: 8080

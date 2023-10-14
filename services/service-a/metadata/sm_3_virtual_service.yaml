@@ -1,0 +1,49 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: demo-services-vs
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - demo-services-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /service-a
+      rewrite:
+        uri: /
+        uriRegexRewrite:
+          match: ^/service-a/(/.*)$
+          rewrite: /\1
+      route:
+        - destination:
+            host: service-a.demo-service-mesh.svc.cluster.local
+            port:
+              number: 8080
+    - match:
+        - uri:
+            prefix: /service-b
+      rewrite:
+        uri: /
+        uriRegexRewrite:
+          match: ^/service-b/(/.*)$
+          rewrite: /\1
+      route:
+        - destination:
+            host: service-b.demo-service-mesh.svc.cluster.local
+            port:
+              number: 8080
+    - match:
+        - uri:
+            prefix: /service-c
+      rewrite:
+        uri: /
+        uriRegexRewrite:
+          match: ^/service-c/(/.*)$
+          rewrite: /\1
+      route:
+        - destination:
+            host: service-c.demo-service-mesh.svc.cluster.local
+            port:
+              number: 8080

@@ -32,6 +32,6 @@ class SampleResource {
         } catch (e: Exception){
             listOf("Service C request failed: ${e.localizedMessage}")
         }
-        return Response.ok(bResult + cResult + listOf("Service A says hello - V1")).build()
+        return Response.ok(bResult + cResult + listOf("Service A says hello - V2")).build()
     }
 }

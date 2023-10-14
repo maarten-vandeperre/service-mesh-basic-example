@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-c
+  namespace: demo-service-mesh
+  labels:
+    app: service-c
+    app.kubernetes.io/component: service-c
+    app.kubernetes.io/instance: service-c
+    app.kubernetes.io/name: service-c
+    app.kubernetes.io/part-of: service-c
+spec:
+  ports:
+    - name: http-8080
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: service-c
+    deployment: service-c
+  type: ClusterIP

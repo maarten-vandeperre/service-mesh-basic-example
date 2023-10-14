@@ -13,6 +13,9 @@ pluginManagement {
 rootProject.name= "service-mesh-basic-example"
 
 include("services:service-a")
+include("services:service-a-v2")
+include("services:service-b")
+include("services:service-c")
 
 rootProject.children
         .flatMap { child -> if (child.children.isEmpty()) listOf(child) else child.children }
