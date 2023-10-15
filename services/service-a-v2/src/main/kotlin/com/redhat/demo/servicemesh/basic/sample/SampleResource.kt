@@ -6,6 +6,7 @@ import jakarta.ws.rs.Produces
 import jakarta.ws.rs.core.MediaType
 import jakarta.ws.rs.core.Response
 import org.eclipse.microprofile.config.ConfigProvider
+import org.eclipse.microprofile.metrics.MetricUnits
 import org.eclipse.microprofile.metrics.annotation.Counted
 import org.eclipse.microprofile.metrics.annotation.Timed
 
@@ -19,8 +20,8 @@ class SampleResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Counted(name = "Service A - Hello - Counter", description = "the get data implementation for service A")
-    @Timed(name = "Service A - Hello - Timer", description = "the get data implementation for service A")
+    @Counted(name = "servcicea_svc:counter", description = "the get data implementation for service A")
+    @Timed(name = "servicea:svc:timer", description = "the get data implementation for service A", unit = MetricUnits.MILLISECONDS)
     fun getData(): Response {
         val bResult = try{
             serviceBHttpTemplate.jsonGet("/hello", emptyMap()){ listOf(it) }

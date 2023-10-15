@@ -12,10 +12,6 @@ metadata:
     app.kubernetes.io/name: service-b
     app.kubernetes.io/part-of: service-b
     app.openshift.io/runtime-namespace: demo-service-mesh
-
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "8080"
-    prometheus.io/scheme: "http"
 spec:
   selector:
     matchLabels:
@@ -31,11 +27,16 @@ spec:
         deployment: service-b
       annotations:
         sidecar.istio.io/inject: "true"
+
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/scheme: "http"
+        prometheus.io/path: "/service-b/q/metrics"
     spec:
       containers:
         - name: container
           image: >-
-            quay.io/appdev_playground/service-mesh-basic-example:service-b-0.0.13
+            quay.io/appdev_playground/service-mesh-basic-example:service-b-0.0.19
           ports:
             - containerPort: 8080
               protocol: TCP

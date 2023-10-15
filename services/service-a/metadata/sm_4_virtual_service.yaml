@@ -15,11 +15,11 @@ spec:
             version:
               exact: v2
           ignoreUriCase: true
-      rewrite:
-        uri: /
-        uriRegexRewrite:
-          match: ^/service-a/(/.*)$
-          rewrite: /
+#      rewrite:
+#        uri: /
+#        uriRegexRewrite:
+#          match: ^/service-a/(/.*)$
+#          rewrite: /
       route:
         - destination:
             host: service-a.demo-service-mesh.svc.cluster.local
@@ -29,11 +29,11 @@ spec:
     - match:
         - uri:
             prefix: /service-a
-      rewrite:
-        uri: /
-        uriRegexRewrite:
-          match: ^/service-a/(/.*)$
-          rewrite: /\1
+#      rewrite:
+#        uri: /
+#        uriRegexRewrite:
+#          match: ^/service-a/(.*)$
+#          rewrite: /\1
       route:
         - destination:
             host: service-a.demo-service-mesh.svc.cluster.local
@@ -43,11 +43,11 @@ spec:
     - match:
         - uri:
             prefix: /service-b
-      rewrite:
-        uri: /
-        uriRegexRewrite:
-          match: ^/service-b/(/.*)$
-          rewrite: /\1
+#      rewrite:
+#        uri: /
+#        uriRegexRewrite:
+#          match: ^/service-b/(/.*)$
+#          rewrite: /\1
       route:
         - destination:
             host: service-b.demo-service-mesh.svc.cluster.local
@@ -56,11 +56,11 @@ spec:
     - match:
         - uri:
             prefix: /service-c
-      rewrite:
-        uri: /
-        uriRegexRewrite:
-          match: ^/service-c/(/.*)$
-          rewrite: /\1
+#      rewrite:
+#        uri: /
+#        uriRegexRewrite:
+#          match: ^/service-c/(/.*)$
+#          rewrite: /\1
       route:
         - destination:
             host: service-c.demo-service-mesh.svc.cluster.local
