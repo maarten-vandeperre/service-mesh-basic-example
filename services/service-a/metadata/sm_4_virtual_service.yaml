@@ -14,43 +14,27 @@ spec:
           headers:
             version:
               exact: v2
-          ignoreUriCase: true
-#      rewrite:
-#        uri: /
-#        uriRegexRewrite:
-#          match: ^/service-a/(/.*)$
-#          rewrite: /
       route:
         - destination:
-            host: service-a.demo-service-mesh.svc.cluster.local
+            host: service-a.maarten-3scale.svc.cluster.local
             subset: v2
             port:
               number: 8080
     - match:
         - uri:
             prefix: /service-a
-#      rewrite:
-#        uri: /
-#        uriRegexRewrite:
-#          match: ^/service-a/(.*)$
-#          rewrite: /\1
       route:
         - destination:
-            host: service-a.demo-service-mesh.svc.cluster.local
+            host: service-a.maarten-3scale.svc.cluster.local
             subset: v1
             port:
               number: 8080
     - match:
         - uri:
             prefix: /service-b
-#      rewrite:
-#        uri: /
-#        uriRegexRewrite:
-#          match: ^/service-b/(/.*)$
-#          rewrite: /\1
       route:
         - destination:
-            host: service-b.demo-service-mesh.svc.cluster.local
+            host: service-b.maarten-3scale.svc.cluster.local
             port:
               number: 8080
     - match:
@@ -63,6 +47,6 @@ spec:
 #          rewrite: /\1
       route:
         - destination:
-            host: service-c.demo-service-mesh.svc.cluster.local
+            host: service-c.maarten-3scale.svc.cluster.local
             port:
               number: 8080

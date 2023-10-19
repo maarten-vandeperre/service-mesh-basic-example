@@ -18,7 +18,7 @@ spec:
           rewrite: /\1
       route:
         - destination:
-            host: service-a.demo-service-mesh.svc.cluster.local
+            host: service-a.maarten-3scale.svc.cluster.local
             port:
               number: 8080
     - match:
@@ -31,6 +31,6 @@ spec:
           rewrite: /\1
       route:
         - destination:
-            host: service-b.demo-service-mesh.svc.cluster.local
+            host: service-b.maarten-3scale.svc.cluster.local
             port:
               number: 8080

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: service-a
-  namespace: demo-service-mesh
+  namespace: maarten-3scale
   labels:
     app: service-a
     app.kubernetes.io/component: service-a
