@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: maarten-3scale
+  namespace: maarten-service-mesh
   name: 'service-a-v2'
   annotations: {}
   labels:
@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/instance: service-a
     app.kubernetes.io/name: service-a
     app.kubernetes.io/part-of: service-a
-    app.openshift.io/runtime-namespace: maarten-3scale
+    app.openshift.io/runtime-namespace: maarten-service-mesh
 spec:
   selector:
     matchLabels:
@@ -36,7 +36,7 @@ spec:
       containers:
         - name: container
           image: >-
-            quay.io/appdev_playground/service-mesh-basic-example:service-a-v2-0.0.22
+            quay.io/appdev_playground/service-mesh-basic-example:service-a-v2-0.0.45
           ports:
             - containerPort: 8080
               protocol: TCP

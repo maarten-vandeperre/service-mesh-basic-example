@@ -11,30 +11,24 @@ spec:
     - match:
         - uri:
             prefix: /service-a
-          headers:
-            version:
-              exact: v2
       route:
         - destination:
-            host: service-a.maarten-3scale.svc.cluster.local
-            subset: v2
-            port:
-              number: 8080
-    - match:
-        - uri:
-            prefix: /service-a
-      route:
-        - destination:
-            host: service-a.maarten-3scale.svc.cluster.local
+            host: service-a.maarten-service-mesh.svc.cluster.local
             subset: v1
             port:
               number: 8080
+      mirror:
+        host: service-a.maarten-service-mesh.svc.cluster.local
+        subset: v2
+        port:
+          number: 8080
+      mirrorPercent: 10
     - match:
         - uri:
             prefix: /service-b
       route:
         - destination:
-            host: service-b.maarten-3scale.svc.cluster.local
+            host: service-b.maarten-service-mesh.svc.cluster.local
             port:
               number: 8080
     - match:
@@ -47,6 +41,6 @@ spec:
 #          rewrite: /\1
       route:
         - destination:
-            host: service-c.maarten-3scale.svc.cluster.local
+            host: service-c.maarten-service-mesh.svc.cluster.local
             port:
               number: 8080

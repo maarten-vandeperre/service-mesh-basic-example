@@ -2,6 +2,4 @@
 A basic sample implementation of Red Hat Service Mesh
 
 
-while true; \
-    do curl ${GATEWAY_URL}/greet; \
-sleep 3;done
+https://kiali.io/docs/configuration/kialis.kiali.io/ in kiali operator > kiali instance

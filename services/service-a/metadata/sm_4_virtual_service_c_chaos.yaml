@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: service-c
+spec:
+  hosts:
+    - service-c
+  http:
+    - route:
+        - destination:
+            host: service-c
+      fault:
+        delay:
+          percentage:
+            value: 25.0
+          fixedDelay: 4000ms
