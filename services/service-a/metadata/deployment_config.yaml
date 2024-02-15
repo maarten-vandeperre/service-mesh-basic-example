@@ -40,6 +40,11 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+          env:
+            - name: demo.service-b.base-url
+              value: http://service-b.app-playground.svc.cluster.local:8080/service-b
+            - name: demo.service-c.base-url
+              value: http://service-c.app-playground.svc.cluster.local:8080/service-c
       imagePullSecrets: []
   strategy:
     type: RollingUpdate
