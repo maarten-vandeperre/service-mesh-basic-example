@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: maarten-service-mesh
+  namespace: app-playground
   name: 'service-c'
   annotations: {}
   labels:
@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/instance: service-c
     app.kubernetes.io/name: service-c
     app.kubernetes.io/part-of: service-c
-    app.openshift.io/runtime-namespace: maarten-service-mesh
+    app.openshift.io/runtime-namespace: app-playground
 spec:
   selector:
     matchLabels:

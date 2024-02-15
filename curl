@@ -1,0 +1,2 @@
+curl --header "version: v2" http://istio-ingressgateway-istio-system.apps.ocp4-bm.redhat.arrowlabs.be/service-a/hello
+curl  http://istio-ingressgateway-istio-system.apps.ocp4-bm.redhat.arrowlabs.be/service-a/hello

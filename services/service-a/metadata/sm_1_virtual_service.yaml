@@ -26,6 +26,6 @@ spec:
           rewrite: /\1
       route:
         - destination:
-            host: service-a.maarten-service-mesh.svc.cluster.local
+            host: service-a.app-playground.svc.cluster.local
             port:
               number: 8080

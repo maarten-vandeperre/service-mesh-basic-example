@@ -13,13 +13,13 @@ spec:
             prefix: /service-a
       route:
         - destination:
-            host: service-a.maarten-service-mesh.svc.cluster.local
+            host: service-a.app-playground.svc.cluster.local
             subset: v1
             port:
               number: 8080
           weight: 50
         - destination:
-            host: service-a.maarten-service-mesh.svc.cluster.local
+            host: service-a.app-playground.svc.cluster.local
             subset: v2
             port:
               number: 8080
@@ -29,7 +29,7 @@ spec:
             prefix: /service-b
       route:
         - destination:
-            host: service-b.maarten-service-mesh.svc.cluster.local
+            host: service-b.app-playground.svc.cluster.local
             port:
               number: 8080
     - match:
@@ -42,6 +42,6 @@ spec:
 #          rewrite: /\1
       route:
         - destination:
-            host: service-c.maarten-service-mesh.svc.cluster.local
+            host: service-c.app-playground.svc.cluster.local
             port:
               number: 8080
